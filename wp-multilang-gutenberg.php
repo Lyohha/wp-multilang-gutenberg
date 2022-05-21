@@ -1,15 +1,15 @@
 <?php
 /**
  * Plugin Name:       WP Multilang Gutenberg
- * Plugin URI:        https://github.com/Lyohha
- * GitHub Plugin URI: https://github.com/Lyohha
+ * Plugin URI:        https://github.com/Lyohha/wp-multilang-gutenberg
+ * GitHub Plugin URI: https://github.com/Lyohha/wp-multilang-gutenberg
  * Description:       Addon for fix translation in Gutenberg Editor
  * Author:            Lyohha
  * License:           GPL2
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       wp-multilang-gutenberg
  * Domain Path:       /languages
- * Version:           1.1.2
+ * Version:           1.2.0
  * Copyright:         © 2022 Lyohha
  *
  * @package  WPM
@@ -17,7 +17,11 @@
  * @author   Lyohha
  */
 
-require 'core.php';
+if (!defined( 'ABSPATH')) {
+	exit; 
+}
 
-new WPM_Gutenberg();
+require 'core/core.php';
+
+new WPM_Gutenberg(plugin_basename( __DIR__ ), '1.2.0');
 ?>
