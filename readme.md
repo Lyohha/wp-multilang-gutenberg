@@ -1,0 +1,1 @@
+Fixes for plugin WPMultilang 2.4.1
