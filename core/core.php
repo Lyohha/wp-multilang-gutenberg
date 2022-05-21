@@ -1,8 +1,18 @@
 <?php
 
+require __DIR__ . '/acf.php';
+require __DIR__ . '/update.php';
+
 class WPM_Gutenberg {
 
-    public function __construct() {
+    public function __construct($basename, $version) {
+        new WPM_Gutenberg_ACF();
+        new WPM_Gutenberg_Update($basename, $version);
+
+        $this->setup();
+    }
+
+    private function setup() {
         add_action( 'init', array( $this, 'init' ), 99);
     }
 
@@ -10,8 +20,6 @@ class WPM_Gutenberg {
      * Add new filter for post content
      */
     public function init() {
-        add_filter('wp_insert_post_data', array($this, 'save_post'), 10, 2);
-
         $post_types = get_post_types(array('_builtin' => true));
         foreach($post_types as $post_type) {
             if($post_type == 'menu' || $post_type == 'attachment')
@@ -23,7 +31,7 @@ class WPM_Gutenberg {
     /**
      * Change link in Gutenberg Editor
      * @version 1.1.0
-     * @update 1.1.1
+     * @since 1.1.1
      */
     public function rest_prepare($response, $post, $request ) {
 
@@ -91,24 +99,6 @@ class WPM_Gutenberg {
         }
     
         return apply_filters( 'wpm_translate_url', $new_url, $language, $url );
-    }
-
-    public function save_post( $data, $postarr ) {
-
-        /**
-         * ACF save self fields in post content. 
-         * Before saving fields translate and broken fields add in main content.
-         * WPM find wrong translated area in fields and return only part translate.
-         * Function remove translate shortcode from fields. 
-         */
-        /**
-         * This if used for check, what content try save WP. 
-         * Content is right if start from '['. It`s content will be cleared before.
-         */
-        if(substr($data['post_content'],0,1) != '[')
-            $data['post_content'] = preg_replace('#\[:([a-z-]*)\]#im', '', $data['post_content']);
-        
-        return $data;
     }
 }
 
