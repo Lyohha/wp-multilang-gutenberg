@@ -2,12 +2,18 @@
 
 require __DIR__ . '/acf.php';
 require __DIR__ . '/update.php';
+require __DIR__ . '/metaboxes.php';
+require __DIR__ . '/scripts.php';
+require __DIR__ . '/ajax.php';
 
 class WPM_Gutenberg {
 
-    public function __construct($basename, $version) {
+    public function __construct($dir, $version) {
         new WPM_Gutenberg_ACF();
-        new WPM_Gutenberg_Update($basename, $version);
+        new WPM_Gutenberg_MetaBoxes();
+        new WPM_Gutenberg_Update(plugin_basename($dir), $version);
+        new WPM_Gutenberg_Scripts(plugin_basename($dir));
+        new WPM_Gutenberg_Ajax();
 
         $this->setup();
     }
