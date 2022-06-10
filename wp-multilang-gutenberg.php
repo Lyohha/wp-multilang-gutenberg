@@ -9,7 +9,7 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       wp-multilang-gutenberg
  * Domain Path:       /languages
- * Version:           1.2.0
+ * Version:           1.3.0
  * Copyright:         © 2022 Lyohha
  *
  * @package  WPM
@@ -23,5 +23,5 @@ if (!defined( 'ABSPATH')) {
 
 require 'core/core.php';
 
-new WPM_Gutenberg(plugin_basename( __DIR__ ), '1.2.0');
+new WPM_Gutenberg(__DIR__, '1.3.0');
 ?>
