@@ -44,6 +44,8 @@ class WPM_Gutenberg_Ajax {
 
         $content = wpm_translate_string($post->post_content, $_POST['from']);
 
+        $content = wp_slash($content);
+
         $this->content_copy = $content;
         $this->lang_to = $_POST['to'];
 
@@ -63,7 +65,7 @@ class WPM_Gutenberg_Ajax {
         die;
     }
 
-     /**
+    /**
      * Filter for insert copy data
      * @version 1.3.0
      */

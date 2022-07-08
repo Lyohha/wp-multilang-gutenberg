@@ -54,7 +54,6 @@ class WPM_Gutenberg {
                     $response->data['permalink_template'] = $this->translate_url($response->data['permalink_template'], $lang);
                 }
             }
-           
         }
 
         return $response;
