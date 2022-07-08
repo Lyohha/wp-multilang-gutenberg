@@ -1,5 +1,9 @@
 # Fixes for plugin WPMultilang 2.4.1
 
+## 1.3.1 - 08 july 2022
+
+- Fix slashing on content copy
+
 ## 1.3.0 - 10 june 2022
 
 - Add metabox for copy content to another language, for easy copy Gutenberg blocks between languages.
